@@ -61,6 +61,9 @@ local function Init()
 
 		-- enable target of target frames
 		{ Name = "showTargetOfTarget", Value = 1 },
+
+		-- show spell ids in aura tooltips
+		{ Name = "tooltipShowAuraSpellIDs", Value = 1 },
 	}
 
 	for _, cvar in ipairs(cvars) do
