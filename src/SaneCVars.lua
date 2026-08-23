@@ -3,6 +3,7 @@ local frame
 local enabled = true
 local SetCVar = C_CVar and C_CVar.SetCVar or SetCVar
 local RegisterCVar = C_CVar and C_CVar.RegisterCVar or RegisterCVar
+local GetCVarDefault = C_CVar and C_CVar.GetCVarDefault or GetCVarDefault
 
 local function Init()
 	local cvars = {
@@ -67,7 +68,7 @@ local function Init()
 	}
 
 	for _, cvar in ipairs(cvars) do
-		local value = enabled and cvar.Value or GetCVarDefaut(cvar.Name)
+		local value = enabled and cvar.Value or GetCVarDefault(cvar.Name)
 
 		if cvar.IsSession then
 			RegisterCVar(cvar.Name, value)
