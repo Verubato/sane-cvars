@@ -16,18 +16,6 @@ local function findCall(calls, name)
 	end
 end
 
----Matches a cvar name ignoring case, since WoW's own CVar lookup does the same. Only for the
----one entry whose source spelling is a known mistake this suite deliberately does not enforce.
-local function findCallIgnoreCase(calls, name)
-	local lowerName = name:lower()
-
-	for _, call in ipairs(calls) do
-		if call.Name:lower() == lowerName then
-			return call
-		end
-	end
-end
-
 fw.describe("SaneCVars - applying the list", function()
 	fw.it("applies every cvar in the list on ADDON_LOADED", function()
 		local env = CVars.Build()
@@ -68,8 +56,8 @@ fw.describe("SaneCVars - applying the list", function()
 		fw.not_nil(zoom, "a non-integer valued cvar reached SetCVar")
 		fw.eq(zoom.Value, 2.6, "with its listed value")
 
-		local classColor = findCallIgnoreCase(env.SetCVarCalls, "raidFramesDisplayClassColor")
-		fw.not_nil(classColor, "the class-colour cvar reached SetCVar regardless of case")
+		local classColor = findCall(env.SetCVarCalls, "raidFramesDisplayClassColor")
+		fw.not_nil(classColor, "the class-colour cvar reached SetCVar")
 	end)
 
 	fw.it("ignores ADDON_LOADED for a different addon", function()

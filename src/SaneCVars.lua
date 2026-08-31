@@ -33,7 +33,7 @@ local function Init()
 		{ Name = "Sound_NumChannels", Value = 128 },
 
 		-- class colour unit frames
-		{ Name = "raidFramesDisplayClassCOlor", Value = 1 },
+		{ Name = "raidFramesDisplayClassColor", Value = 1 },
 		{ Name = "pvpFramesDisplayClassColor", Value = 1 },
 
 		-- disable tutorials
